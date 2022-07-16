@@ -3,9 +3,14 @@ import './SocialLogin.css';
 import google from '../../../images/google/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png'
 import auth from './../../../firebase.init';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const navigate = useNavigate();
+    if (user) {
+        navigate('/')
+    }
     return (
         <div className=''>
 

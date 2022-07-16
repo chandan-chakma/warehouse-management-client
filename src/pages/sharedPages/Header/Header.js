@@ -1,8 +1,15 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from './../../../firebase.init';
 
 const Header = () => {
+    const [user] = useAuthState(auth);
+    const logOut = () => {
+        signOut(auth);
+    }
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
@@ -10,7 +17,8 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#features">Features</Nav.Link>
+                        <Nav.Link as={Link} to="/">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/manageInventory">ManageInventory</Nav.Link>
                         <Nav.Link href="#pricing">Pricing</Nav.Link>
                         <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -25,7 +33,11 @@ const Header = () => {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <Nav.Link as={Link} to='/signin'>Signin</Nav.Link>
+                        {
+                            user ? <button onClick={logOut}>Signout</button> :
+                                <Nav.Link as={Link} to='/signin'>Signin</Nav.Link>
+                        }
+
                         <Nav.Link eventKey={2} href="#memes">
                             Dank memes
                         </Nav.Link>
@@ -33,7 +45,7 @@ const Header = () => {
                 </Navbar.Collapse>
             </Container>
 
-        </Navbar>
+        </Navbar >
     );
 }
 
