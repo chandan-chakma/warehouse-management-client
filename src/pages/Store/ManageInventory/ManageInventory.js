@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import UseInventories from './../../../Hook/UseInventories';
 import './ManageInventory.css'
 
@@ -10,7 +11,8 @@ const ManageInventory = () => {
             <div className='d-flex justify-content-between w-50 mx-auto '>
                 <div></div>
                 <div>
-                    <button className='btn btn-primary'>Add Item</button>
+                    <Link to='/additem'>
+                        <button className='btn btn-primary'>Add Item</button></Link>
                 </div>
             </div>
 
