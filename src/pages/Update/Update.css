@@ -1,0 +1,13 @@
+.update img {
+    width: 500px;
+    height: 400px;
+
+}
+
+.update img:hover {
+    transform: scale(0.9) rotate(35deg);
+
+    transition: 1s;
+    /* transform: scale3d(0.9); */
+
+}

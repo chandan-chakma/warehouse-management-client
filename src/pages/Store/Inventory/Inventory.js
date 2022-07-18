@@ -6,8 +6,8 @@ const Inventory = ({ inventory }) => {
     const { _id, name, price, description, img, supplier } = inventory;
     const navigate = useNavigate();
 
-    const handleUpdate = (_id) => {
-        navigate(`/inventory/${_id}`)
+    const handleUpdate = (id) => {
+        navigate(`/inventory/${id}`)
 
     }
     return (

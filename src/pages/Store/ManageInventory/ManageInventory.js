@@ -5,6 +5,9 @@ import './ManageInventory.css'
 
 const ManageInventory = () => {
     const [inventories, setInventories] = UseInventories();
+    const handleDelete = () => {
+
+    }
     return (
         <div className='mt-4'>
             <h1 className='text-center mb-5 text-success'>Manage Inventory</h1>
