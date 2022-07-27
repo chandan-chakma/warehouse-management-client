@@ -2,8 +2,10 @@ import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from './../../../firebase.init';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import SocialLogin from './../SocialLogin/SocialLogin';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -19,6 +21,7 @@ const SignIn = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(auth);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -28,12 +31,38 @@ const SignIn = () => {
 
 
     }
+
+    const resetPassword = async () => {
+        const email = emailRef.current.value;
+
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast("sent email")
+
+        }
+        else {
+            toast("Enter your email")
+        }
+
+    }
+
+    let errorElement;
+    if (error) {
+        errorElement =
+            <div>
+                <p className='text-danger'>{error.message}</p>
+
+            </div>
+    }
+
+
+
     if (user) {
         navigate(from, { replace: true });
     }
     return (
         <div className='w-50 mx-auto m-3'>
-            <h2 className='text-center text-primary'>Please Signin</h2>
+            <h2 className='text-center text-primary'>Please Sign in</h2>
 
 
             <Form onSubmit={handleSubmit}>
@@ -46,14 +75,17 @@ const SignIn = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control ref={passwordRef} type="password" placeholder="Password" />
                 </Form.Group>
+                {errorElement}
 
                 <Button variant="primary" type="submit">
                     Sign in
                 </Button>
             </Form>
+            <p className='mt-2'>Forget password <span className='btn btn-primary' onClick={resetPassword}>Reset password</span></p>
             <p className='mt-3 text-primary'>New to warehouse management? <Link to='/register' className='text-danger text-decoration-none m-2'>Please Register</Link></p>
 
             <SocialLogin></SocialLogin>
+            <ToastContainer></ToastContainer>
 
         </div>
     );
