@@ -5,7 +5,25 @@ import './ManageInventory.css'
 
 const ManageInventory = () => {
     const [inventories, setInventories] = UseInventories();
-    const handleDelete = () => {
+    const handleDelete = (id) => {
+        const processed = window.confirm("do you want to delete")
+        if (processed) {
+            const url = `http://localhost:5000/product/${id}`;
+
+            fetch(url, {
+                method: "DELETE",
+
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    const remaining = inventories.filter(inventory => inventory._id !== id);
+                    setInventories(remaining);
+
+                })
+
+
+        }
 
     }
     return (
@@ -33,7 +51,7 @@ const ManageInventory = () => {
                     </div>
 
                     <div>
-                        <button className='btn btn-danger'>Delete</button>
+                        <button onClick={() => handleDelete(inventory._id)} className='btn btn-danger'>Delete</button>
                     </div>
 
 
