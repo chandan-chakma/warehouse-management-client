@@ -6,6 +6,7 @@ import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-
 import SocialLogin from './../SocialLogin/SocialLogin';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 
 
@@ -23,12 +24,14 @@ const SignIn = () => {
     ] = useSignInWithEmailAndPassword(auth);
     const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(auth);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        signInWithEmailAndPassword(email, password)
-
+        await signInWithEmailAndPassword(email, password);
+        const { data } = await axios.post('http://localhost:5000/signin', { email })
+        console.log(data)
+        localStorage.setItem('accessToken', data.accessToken)
 
     }
 

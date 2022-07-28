@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import auth from './../../../firebase.init';
 import logo from '../../../images/logo.png';
 import './Header.css';
-import { user } from '@heroicons/react/solid'
+
 
 
 const Header = () => {
