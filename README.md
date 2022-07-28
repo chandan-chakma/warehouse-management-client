@@ -1,6 +1,19 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was HTML5 CSS3 bootstrapped with react.js and 
+for backend node.js and MONGODB  [warehouse management name transpix](https://github.com/facebook/create-react-app).
+
+##Features and functionality:
+Transpix is a website where user can store their product.
+
+* User can log in using email and password.
+* Social log in system.
+* User can reset password.
+* Without login user can not access manage inventory pages.
+* User can add product.
+* and also can delete.
+* Basic jwt token implementation
+* Responsive design
 
 ## Available Scripts
 

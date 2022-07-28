@@ -10,7 +10,7 @@ const Home = () => {
             <Banner></Banner>
             <Inventories></Inventories>
             <Link to='/manageInventory'>
-                <button className='btn btn-primary text-center d-block mx-auto m-4 py-3 fs-3 w-25 '>Manage Inventory</button>
+                <button className='btn btn-primary text-center d-block mx-auto m-4 py-3 fs-3 px-4 '>Manage Inventory</button>
             </Link>
 
 

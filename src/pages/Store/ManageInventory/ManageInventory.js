@@ -38,21 +38,26 @@ const ManageInventory = () => {
             </div>
 
             {
-                inventories.map(inventory => <div className='d-flex justify-content-between style w-50 mx-auto border m-3 p-3'
+                inventories.map(inventory => <div className='d-flex justify-content-between align-items-center style w-50 mx-auto border m-3 p-3'
                     key={inventory._id}
                 >
-                    <div className='d-flex justify-content-center align-items-end'>
+                    <div className='d-flex justify-content-center align-items-center'>
                         <img src={inventory.img} alt="" />
                         <div className='ps-3'>
                             <h2>{inventory.name}</h2>
                             <p>Price:{inventory.price}</p>
+
                         </div>
 
+
+                    </div>
+                    <div>
+                        <button onClick={() => handleDelete(inventory._id)} className='btn btn-danger mt-2'>Delete</button>
+
                     </div>
 
-                    <div>
-                        <button onClick={() => handleDelete(inventory._id)} className='btn btn-danger'>Delete</button>
-                    </div>
+
+
 
 
                 </div>)

@@ -3,3 +3,10 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 15px;
 }
+
+@media only screen and (max-width: 576Px) {
+    .inventories {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}
