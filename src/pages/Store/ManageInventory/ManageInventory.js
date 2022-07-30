@@ -8,7 +8,7 @@ const ManageInventory = () => {
     const handleDelete = (id) => {
         const processed = window.confirm("do you want to delete")
         if (processed) {
-            const url = `http://localhost:5000/product/${id}`;
+            const url = `https://intense-dawn-90843.herokuapp.com/product/${id}`;
 
             fetch(url, {
                 method: "DELETE",

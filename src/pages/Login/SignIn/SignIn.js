@@ -29,7 +29,7 @@ const SignIn = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         await signInWithEmailAndPassword(email, password);
-        const { data } = await axios.post('http://localhost:5000/signin', { email })
+        const { data } = await axios.post('https://intense-dawn-90843.herokuapp.com/signin', { email })
         console.log(data)
         localStorage.setItem('accessToken', data.accessToken)
 

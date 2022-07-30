@@ -40,7 +40,7 @@ const Header = () => {
                         {
                             user ?
                                 <>
-                                    <h2 className='text-white fw-normal mx-3 text-warning'>{user.displayName}</h2>
+                                    <h2 className='text-white fw-normal mx-3 text-warning'>{user?.displayName}</h2>
                                     <button className='btn btn-success px-3' onClick={logOut}>Signout</button>
 
 
